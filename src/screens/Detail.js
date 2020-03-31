@@ -1,17 +1,16 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 
-function Detail(props) {
-  const { route, navigation } = props
+function Detail({ route, navigation }) {
   const { item } = route.params
-  const { name, home, species } = item
+  const { name, home, specie } = item
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Detail Screen</Text>
       <View style={styles.card}>
         <Text style={styles.cardText}>Name: {name}</Text>
         <Text style={styles.cardText}>Home Planet: {home}</Text>
-        <Text style={styles.cardText}>Species: {species}</Text>
+        <Text style={styles.cardText}>Species: {specie}</Text>
       </View>
       <TouchableOpacity
         style={styles.buttonContainer}
