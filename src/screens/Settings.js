@@ -6,10 +6,23 @@ function Settings(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Settings</Text>
+
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => navigation.push('Settings')}>
+        <Text style={styles.buttonText}>Go to Settings, again</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.buttonContainer}
+        onPress={() => navigation.goBack()}>
+        <Text style={styles.buttonText}>Go back</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity
         style={styles.buttonContainer}
         onPress={() => navigation.popToTop()}>
-        <Text style={styles.buttonText}>Go to Home</Text>
+        <Text style={styles.buttonText}>Go to First Page</Text>
       </TouchableOpacity>
     </View>
   )

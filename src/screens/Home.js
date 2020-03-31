@@ -1,6 +1,5 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
-import { NavigationNativeContainer } from '@react-navigation/native'
 
 const character = {
     name: 'Luke',
@@ -8,14 +7,13 @@ const character = {
     specie: 'Human'
 }
 
-function Home(props) {
-  const { navigation} = props
+function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home Screen</Text>
       <TouchableOpacity
         style={styles.buttonContainer}
-        onPress={() => navigation.navigate('Detail', {item: character})}
+        onPress={() => navigation.navigate('Detail', {screen: 'Detail', params: {item: character}})}
       >
           <Text style={styles.buttonText}>Who is {character.name}?</Text>
       </TouchableOpacity>
