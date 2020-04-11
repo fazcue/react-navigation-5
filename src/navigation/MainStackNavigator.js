@@ -11,6 +11,8 @@ const HomeStack = createStackNavigator()
 const DetailStack = createStackNavigator()
 const SettingsStack = createStackNavigator()
 
+import { CustomDrawer } from './CustomDrawer'
+
 import Home from '../screens/Home'
 import Detail from '../screens/Detail'
 import Settings from '../screens/Settings'
@@ -38,14 +40,6 @@ function HomeStackScreen({navigation}) {
             title: 'Home Screen',
             headerLeft: () => (
               <MaterialCommunityIcons name="home" backgroundColor='#101010' color='#ffd700' style={{ margin: 10 }} size={26} onPress={() => navigation.openDrawer()} />
-            ),
-            headerRight: () => (
-              <Button
-                onPress={() => alert('This is a button!')}
-                title="Añade tu servicio"
-                color="dodgerblue"
-                style={{ margin: 10 }}
-              />
             )
           }}
         />
@@ -125,6 +119,7 @@ function MainTabNavigator() {
       activeColor="#e91e63"
       style={{ backgroundColor: 'tomato' }}
       shifting={true}
+      labeled={true}
     >
       <Tab.Screen
         name="Home"
@@ -170,9 +165,21 @@ const Drawer = createDrawerNavigator();
 function MainNavigator() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName='Home'>
-      {/* <MainStackNavigator /> */}
-        <Drawer.Screen name='Home' component={MainTabNavigator} />
+      <Drawer.Navigator 
+        drawerContent={props => <CustomDrawer {...props} />}
+        drawerStyle={{
+          backgroundColor: '#101010',
+          width: 240
+        }}
+      >
+        <Drawer.Screen 
+          name='HomeDrawer' 
+          component={MainTabNavigator} 
+          options={{
+                drawerIcon: ({ color }) => ( <MaterialCommunityIcons name="home" color={color} size={24} /> ),
+                unmountOnBlur: true
+            }}
+        />
       </Drawer.Navigator>
   </NavigationContainer>
   )
